@@ -1,8 +1,9 @@
 <script>
   import Controls from "./components/Controls.svelte";
+  import FpsMonitor from "./components/FpsMonitor.svelte";
   import GameField from "./components/GameField.svelte";
-  import { startGame } from "./gameLoop/gameLoop";
-  startGame();
+  import Modal from "./components/Modal.svelte";
+  import { isPlaying } from "./stores/game";
 </script>
 
 <style>
@@ -20,5 +21,11 @@
   }
 </style>
 
-<Controls />
 <GameField />
+<FpsMonitor />
+<Controls />
+<div>
+  {#if !$isPlaying}
+    <Modal />
+  {/if}
+</div>

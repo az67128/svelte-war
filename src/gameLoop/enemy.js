@@ -1,8 +1,8 @@
 import { get } from 'svelte/store';
-import { enemyList, lastEnemyAddedAt } from '../stores/enemy.js';
+import { enemyList, lastEnemyAddedAt, enemyInterval, enemySpeed } from '../stores/enemy.js';
 
 export function addEnemy() {
-  if (Date.now() - get(lastEnemyAddedAt) > 2500) {
+  if (Date.now() - get(lastEnemyAddedAt) > get(enemyInterval)) {
     lastEnemyAddedAt.set(Date.now());
     enemyList.update(enemies => [
       ...enemies,
@@ -10,6 +10,7 @@ export function addEnemy() {
         x: Math.floor(Math.random() * 449) + 1,
         y: 0,
         id: () => Math.random() + Date.now(),
+        speed: get(enemySpeed),
       },
     ]);
   }
@@ -19,7 +20,7 @@ export function moveEnemy() {
   enemyList.update(enemyList =>
     enemyList.map(enemy => ({
       ...enemy,
-      y: enemy.y + 0.5,
+      y: enemy.y + enemy.speed,
     })),
   );
 }

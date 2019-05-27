@@ -20,7 +20,12 @@ export function shoot() {
     lastFireAt.set(Date.now());
     bulletList.update(bullets => [
       ...bullets,
-      { x: 238, y: 760, angle: get(angle), id: () => Math.random() + Date.now() },
+      {
+        x: 238,
+        y: 760,
+        angle: get(angle),
+        id: () => Math.random() + Date.now(),
+      },
     ]);
   }
 }

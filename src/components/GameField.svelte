@@ -1,10 +1,10 @@
 <script>
   import Cannon from "./Cannon.svelte";
-  import Bullet from "./Bullet.svelte";
   import Enemy from "./Enemy.svelte";
-
-  import { bulletList } from "../stores/cannon";
+  import Bullet from "./Bullet.svelte";
+  import Score from "./Score.svelte";
   import { enemyList } from "../stores/enemy";
+  import { bulletList } from "../stores/cannon";
 </script>
 
 <style>
@@ -27,4 +27,5 @@
     {/each}
     <Cannon />
   </svg>
+  <Score />
 </div>

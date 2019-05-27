@@ -1,4 +1,5 @@
 <script>
+  import { onDestroy } from "svelte";
   import IconButton from "./IconButton.svelte";
   import LeftArrow from "../assets/LeftArrow.svelte";
   import RightArrow from "../assets/RightArrow.svelte";
@@ -6,10 +7,57 @@
   import { direction, isFiring } from "../stores/cannon.js";
 
   const resetDirection = () => direction.set(null);
+
   const setDirectionLeft = () => direction.set("left");
+
   const setDirectionRight = () => direction.set("right");
+
   const startFire = () => isFiring.set(true);
+
   const stopFire = () => isFiring.set(false);
+
+  function handleKeyDown(e) {
+    window.requestAnimationFrame(() => {
+      switch (e.keyCode) {
+        case 39:
+          setDirectionRight();
+          break;
+        case 37:
+          setDirectionLeft();
+          break;
+        case 32:
+          startFire();
+          break;
+        default:
+          return;
+      }
+    });
+  }
+
+  function handleKeyUp(e) {
+    window.requestAnimationFrame(() => {
+      switch (e.keyCode) {
+        case 39:
+          resetDirection();
+          break;
+        case 37:
+          resetDirection();
+          break;
+        case 32:
+          stopFire();
+          break;
+        default:
+          return;
+      }
+    });
+  }
+
+  document.body.addEventListener("keydown", handleKeyDown, false);
+  document.body.addEventListener("keyup", handleKeyUp, false);
+  onDestroy(() => {
+    document.body.removeEventListener("keydown", handleKeyDown);
+    document.body.removeEventListener("keyup", handleKeyUp);
+  });
 </script>
 
 <style>
@@ -50,5 +98,6 @@
     <IconButton start={startFire} release={stopFire} active={$isFiring}>
       <Bullet />
     </IconButton>
+
   </div>
 </div>

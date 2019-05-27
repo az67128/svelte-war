@@ -7,12 +7,12 @@
 <style>
   .iconButton {
     display: flex;
-    align-items: center;
-    justify-content: center;
     width: 60px;
     height: 60px;
     border: 1px solid black;
     border-radius: 50px;
+    align-items: center;
+    justify-content: center;
   }
   .active {
     background-color: #bdbdbd;

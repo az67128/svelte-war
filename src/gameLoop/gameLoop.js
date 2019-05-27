@@ -1,8 +1,8 @@
-import { isPlaying } from '../stores/game';
+import { isPlaying, score } from '../stores/game';
 import { get } from 'svelte/store';
 import { rotateCannon, shoot, moveBullet, clearBullets } from './cannon';
-import { checkCollision } from './game';
 import { addEnemy, moveEnemy } from './enemy';
+import { checkCollision, enemyAttack } from './game';
 
 function startLoop(steps) {
   window.requestAnimationFrame(() => {
@@ -15,7 +15,17 @@ function startLoop(steps) {
 
 export const startGame = () => {
   isPlaying.set(true);
-  startLoop([rotateCannon, shoot, moveBullet, clearBullets, addEnemy, moveEnemy, checkCollision]);
+  score.set(0);
+  startLoop([
+    rotateCannon,
+    shoot,
+    addEnemy,
+    moveEnemy,
+    enemyAttack,
+    moveBullet,
+    checkCollision,
+    clearBullets,
+  ]);
 };
 
 export function stopGame() {
