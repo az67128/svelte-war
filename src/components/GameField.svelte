@@ -1,5 +1,10 @@
 <script>
   import Cannon from "./Cannon.svelte";
+  import Bullet from "./Bullet.svelte";
+  import Enemy from "./Enemy.svelte";
+
+  import { bulletList } from "../stores/cannon";
+  import { enemyList } from "../stores/enemy";
 </script>
 
 <style>
@@ -14,7 +19,12 @@
 
 <div class="container">
   <svg viewBox="0 0 480 800">
-    <!-- Отображаем компонент пушки -->
+    {#each $enemyList as enemy (enemy.id)}
+      <Enemy {enemy} />
+    {/each}
+    {#each $bulletList as bullet (bullet.id)}
+      <Bullet {bullet} />
+    {/each}
     <Cannon />
   </svg>
 </div>

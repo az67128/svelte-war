@@ -1,0 +1,8 @@
+html{height:100%}body{height:100%;overscroll-behavior:none;user-select:none;margin:0;background-color:#efefef;font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif}
+.controls.svelte-1d9v1w8{position:fixed;bottom:0;left:0;width:100%}.container.svelte-1d9v1w8{display:flex;justify-content:space-between;margin:1rem}.arrowGroup.svelte-1d9v1w8{display:flex;justify-content:space-between;width:150px}
+.container.svelte-1a0dmdb{flex-grow:1;display:flex;flex-direction:column;justify-content:flex-start;max-height:100%}
+.iconButton.svelte-b1xow6{display:flex;align-items:center;justify-content:center;width:60px;height:60px;border:1px solid black;border-radius:50px}.active.svelte-b1xow6{background-color:#bdbdbd}
+.cannon.svelte-r8lgo8{transform-origin:4px 55px}
+
+/*# sourceMappingURL=bundle.css.map */

@@ -1,7 +1,8 @@
 import { isPlaying } from '../stores/game';
 import { get } from 'svelte/store';
-// Импортируем все обработчики событий пушки и снарядов
 import { rotateCannon, shoot, moveBullet, clearBullets } from './cannon';
+import { checkCollision } from './game';
+import { addEnemy, moveEnemy } from './enemy';
 
 function startLoop(steps) {
   window.requestAnimationFrame(() => {
@@ -14,8 +15,7 @@ function startLoop(steps) {
 
 export const startGame = () => {
   isPlaying.set(true);
-  // добавим обработчики в игровой цикл
-  startLoop([rotateCannon, shoot, moveBullet, clearBullets]);
+  startLoop([rotateCannon, shoot, moveBullet, clearBullets, addEnemy, moveEnemy, checkCollision]);
 };
 
 export function stopGame() {
