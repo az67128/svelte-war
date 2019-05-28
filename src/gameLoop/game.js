@@ -1,10 +1,9 @@
 import { get } from 'svelte/store';
 import { bulletList } from '../stores/cannon';
 import { enemyList, enemyInterval, enemySpeed } from '../stores/enemy';
-import { score, maxScore } from '../stores/game';
+import { score, maxScore, isPlaying } from '../stores/game';
 import { removeBullet } from './cannon';
 import { removeEnemy } from './enemy';
-import { stopGame } from './gameLoop';
 
 const enemyWidth = 30;
 const bulletWidth = 5;
@@ -42,7 +41,7 @@ function gameOver() {
   bulletList.set([]);
   enemySpeed.set(0.5);
   enemyInterval.set(3000);
-  stopGame();
+  isPlaying.set(false);
   const currentScore = get(score);
   if (currentScore > get(maxScore)) {
     maxScore.set(currentScore);

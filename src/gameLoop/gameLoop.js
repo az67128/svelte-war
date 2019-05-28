@@ -27,7 +27,3 @@ export const startGame = () => {
     clearBullets,
   ]);
 };
-
-export function stopGame() {
-  isPlaying.set(false);
-}
