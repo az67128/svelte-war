@@ -2,7 +2,6 @@
   width="40px"
   height="40px"
   viewBox="0 0 292.359 292.359"
-  style="enable-background:new 0 0 292.359 292.359;"
   transform="translate(-5 0)">
   <path
     d="M222.979,5.424C219.364,1.807,215.08,0,210.132,0c-4.949,0-9.233,1.807-12.848,5.424L69.378,133.331
